@@ -40,10 +40,45 @@ const test_employes = () => {
         employes.push(employe);
     }
     console.log(Employe.ageMoyen(employes));
-    console.log(Employe.medSalary(employes))
+    console.log(Employe.medSalary(employes));
+    createTable(employes);
 }
 const avg = employes => employes.reduce((acc, cur) => acc + cur / employes.length, 0);
 
 const mediane = employes => employes.reduce((acc, cur) => Math.max(cur) + Math.min(cur) / 2, 0);
 
 /* [1, 2, 3].reduce((acc, cur) => acc + cur, 0); */
+
+const createTable = (employes) => {
+
+    const ce = name => document.createElement(name);
+
+    let cols = ["firstName", "lastName", "email"];
+
+    let table = ce("table");
+    document.body.appendChild(table);
+
+    let header = ce("thead");
+    table.appendChild(header);
+
+    cols.forEach(col => {
+        let colHead = ce("th");
+        colHead.InnerHTML = col;
+        header.appendChild(colHead);
+    });
+
+    let body = ce("tbody");
+    table.appendChild(body);
+
+    employes.forEach(employe => {
+        let row = ce("tr");
+        body.appendChild(row);
+
+        cols.forEach(col => {
+            let cell = ce("td");
+            cell.InnerHTML = employe[col];
+            row.appendChild(cell);
+        });
+    });
+}
+
