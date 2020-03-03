@@ -1,4 +1,4 @@
-window.addEventListener("load", event => test_employes());
+// window.addEventListener("load", event => test_employes());
 class User {
     constructor(firstName, lastName, eMail, numTel, age) {
         this.firstName = firstName;
@@ -63,7 +63,7 @@ const createTable = (employes) => {
 
     cols.forEach(col => {
         let colHead = ce("th");
-        colHead.InnerHTML = col;
+        colHead.innerHTML = col;
         header.appendChild(colHead);
     });
 
@@ -76,7 +76,7 @@ const createTable = (employes) => {
 
         cols.forEach(col => {
             let cell = ce("td");
-            cell.InnerHTML = employe[col];
+            cell.innerHTML = employe[col];
             row.appendChild(cell);
         });
     });
